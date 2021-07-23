@@ -1,19 +1,21 @@
 
 h1 Welcome to the world of blockchains
 
-. data-controller="badge"
-  = form_for :badge, url: "submit", remote: true, data: { action: "submit->badge#submit" }  do |f|
+. data-controller="badge"  data-badge-blockchain="chainpoint"
+  = form_tag("/submit", method: :post, remote: true, data: { action: "submit->badge#submit" })
+    = hidden_field_tag :authenticity_token, form_authenticity_token
+    = hidden_field_tag :blockchain, nil, data: { target: "badge.blockchain" }
 
     .form-input
-      p Badge issue date
-      = f.text_field :issue_date, required: true, data: { target: "badge.issueDate" }, class: "datepicker"
+      = label_tag(:issue_date, "Badge issue date")
+      = text_field :badge, :issue_date, required: true, data: { target: "badge.issueDate" }, class: "datepicker"
 
     .form-input
-      p Badge recipient name
-      = f.text_field :recipient_name, required: true, data: { target: "badge.recipientName" }
+      = label_tag(:recipient_name, "Badge recipient name")
+      = text_field :badge, :recipient_name, required: true, data: { target: "badge.recipientName" }
 
     .form-input
-      p Badge UUID
-      = f.text_field :uuid, required: true, data: { target: "badge.uuid" }
+      = label_tag(:uuid, "Badge UUID")
+      = text_field :badge, :uuid, required: true, data: { target: "badge.uuid" }
 
-    = f.submit
+    = submit_tag "Submit"

@@ -1,14 +1,23 @@
+# based on https://github.com/chainpoint/chainpoint-gateway/wiki/Gateway-HTTP-API#submitting-hashes
 class ChainpointBlockchainService
-  NODE = "3.136.178.15"
+  include HTTParty
+  require 'digest'
 
-  def initialize(data)
-    @badge_data = data
+  base_uri = "http://3.136.178.15"
+
+  def initialize; end
+
+  def self.submit_to_blockchain(data)
+    self.class.post("/hashes", { hashes: digest(data) })
   end
 
-  def submit_to_blockchain
-
+  def self.verify_hash(proof_id)
+    self.class.get("/proofs/#{proof_id}")
   end
 
-  def verify_from_blockchain
+  private
+
+  def self.digest(data)
+    Digest::SHA256.hexdigest(data)
   end
 end

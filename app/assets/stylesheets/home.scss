@@ -3,15 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .form-input {
-  display: grid;
-  grid-template-columns: 200px 150px;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 20px;
-  align-items: center;
 
-  & > p {
-    margin-right: 15px;
-  }
   & > input {
+    width: 350px;
     height: 2rem;
   }
 }

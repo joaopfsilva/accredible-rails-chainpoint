@@ -31,6 +31,9 @@ gem 'slim-rails', '~> 3.3.0'
 gem 'jquery-ui-rails', '~> 6.0.1'
 gem 'jquery-rails', '~> 4.4.0'
 
+gem 'httparty', '~> 0.18.1'
+gem 'pry', '~> 0.13.1'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -40,6 +43,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 5.0.1'
+  gem 'factory_bot_rails', '~> 6.2.0'
 end
 
 group :development do
