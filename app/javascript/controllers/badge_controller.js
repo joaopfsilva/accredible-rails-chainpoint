@@ -1,4 +1,6 @@
 import { Controller } from "stimulus"
+import SHA256 from "sha256";
+import chainpoint from 'chainpoint-js/dist/bundle.web'
 
 export default class extends Controller {
   static targets = [
@@ -11,19 +13,18 @@ export default class extends Controller {
 
   // send data to blockchain
   submit() {
-    const chainpoint_hash = this.createHash(this.issueDateTarget.value, this.recipientNameTarget.value, this.uuidTarget.value);
+    const hash = this.digest(`${this.issueDateTarget.value}${this.recipientNameTarget.value}${ this.uuidTarget.value}`);
     console.log(this.issueDateTarget.value);
     console.log(this.recipientNameTarget.value);
     console.log(this.uuidTarget.value);
 
-    console.log(chainpoint_hash);
+    console.log(chainpoint);
+    console.log(hash);
   }
 
   private
 
-  createHash(date, name, uuid) {
-    let hash = "<hash here>";
-
-    return hash;
+  digest(data) {
+    return SHA256(data);
   }
 }
