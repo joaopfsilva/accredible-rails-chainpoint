@@ -26,6 +26,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'webpacker', '~> 5.x'
+gem 'slim-rails', '~> 3.3.0'
+# gem 'bootstrap-datepicker-rails', '~> 1.9.0.1'
+gem 'jquery-ui-rails', '~> 6.0.1'
+gem 'jquery-rails', '~> 4.4.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

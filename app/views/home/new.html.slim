@@ -1,0 +1,19 @@
+
+h1 Welcome to the world of blockchains
+
+. data-controller="badge"
+  = form_for :badge, url: "submit", remote: true, data: { action: "submit->badge#submit" }  do |f|
+
+    .form-input
+      p Badge issue date
+      = f.text_field :issue_date, required: true, data: { target: "badge.issueDate" }, class: "datepicker"
+
+    .form-input
+      p Badge recipient name
+      = f.text_field :recipient_name, required: true, data: { target: "badge.recipientName" }
+
+    .form-input
+      p Badge UUID
+      = f.text_field :uuid, required: true, data: { target: "badge.uuid" }
+
+    = f.submit
