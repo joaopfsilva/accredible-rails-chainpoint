@@ -33,7 +33,7 @@ gem 'jquery-rails', '~> 4.4.0'
 
 gem 'httparty', '~> 0.18.1'
 gem 'pry', '~> 0.13.1'
-
+gem 'rails-controller-testing', '~> 1.0.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -59,9 +59,9 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
+  # gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  # gem 'chromedriver-helper'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

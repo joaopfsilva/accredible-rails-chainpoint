@@ -3,21 +3,25 @@ class ChainpointBlockchainService
   include HTTParty
   require 'digest'
 
-  base_uri = "http://3.136.178.15"
+  base_uri "http://3.136.178.15"
 
   def initialize; end
 
-  def self.submit_to_blockchain(data)
-    self.class.post("/hashes", { hashes: digest(data) })
+  def submit_to_blockchain(data:)
+    self.class.post("/hashes", { hashes: digest_data(data) })
   end
 
-  def self.verify_hash(proof_id)
-    self.class.get("/proofs/#{proof_id}")
+  def verify_hash(hash:)
+    self.class.get("/proofs/#{hash}")
   end
 
   private
 
-  def self.digest(data)
-    Digest::SHA256.hexdigest(data)
+  def digest_data(data)
+    issue_date = data["issue_date"]
+    recipient_name = data["recipient_name"]
+    uuid = data["uuid"]
+
+    Digest::SHA256.hexdigest("#{issue_date}#{recipient_name}#{uuid}")
   end
 end
