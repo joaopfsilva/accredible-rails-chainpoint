@@ -5,7 +5,7 @@ RSpec.describe HomeController, type: :controller do
   let(:params) do
     {
       blockchain: :chainpoint,
-      badge: {
+      home: {
         issue_date: "01/04/2021",
         recipient_name: "Joao",
         uuid: "12345654321"
@@ -25,11 +25,12 @@ RSpec.describe HomeController, type: :controller do
   end
 
   describe "POST #submit" do
-    it "has valid response from chainpoint blockchain" do
-      allow_any_instance_of(BlockchainService).to receive(:submit_to_blockchain).with(data: params[:badge]).and_return(stubbed_valid_response)
+    it "Return confirmation from Chainpoint blockchain" do
+      allow_any_instance_of(BlockchainService).to receive(:submit_to_blockchain).with(data: params).and_return(stubbed_valid_response)
+      # allow_any_instance_of(BlockchainService).to receive(:submit_to_blockchain).with(params).and_return(stubbed_valid_response)
 
-      post "submit", params: params, as: :js
-      expect(response).to render_template :submit
+      post "submit", params: { home: params }
+      expect(response).to redirect_to(success_path)
     end
   end
 end

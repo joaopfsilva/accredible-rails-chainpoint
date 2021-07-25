@@ -2,10 +2,15 @@ class HomeController < ApplicationController
   def new; end
 
   def submit
-    response = BlockchainService.new(blockchain_name).submit_to_blockchain(data: badge_params.to_h)
-    puts response
+    @response = BlockchainService.new(blockchain_name).submit_to_blockchain(data: badge_params.to_h)
+    puts @response
+
     respond_to do |format|
-      format.json { render json: { code: response["code"], data: response, message: response["message"] } }
+      if @response["code"] == "InvalidArgument"
+        format.js { render :new }
+      else
+        format.js
+      end
     end
   end
 
@@ -14,7 +19,7 @@ class HomeController < ApplicationController
   private
 
   def badge_params
-    params.require(:home).permit([:issue_date, :recipient_name, :uuid])
+    params.require(:badge).permit([:issue_date, :recipient_name, :uuid])
   end
 
   # blockchain service is set as a hidden field on form -> see home/new.html.erb
