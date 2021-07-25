@@ -1,3 +1,5 @@
+# This is class intends to mimic a simple ActiveRecord model, which allow to isolate unit test for this specific logic.
+# NOTE: ActiveRecord is not being used.
 class Badge
   include ActiveModel::Validations
 

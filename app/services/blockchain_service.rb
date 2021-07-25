@@ -27,5 +27,4 @@ class BlockchainService
       nil
     end
   end
-
 end

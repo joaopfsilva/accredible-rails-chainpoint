@@ -3,10 +3,10 @@ class HomeController < ApplicationController
 
   def submit
     @response = BlockchainService.new(blockchain_name).submit_to_blockchain(data: badge_params.to_h)
-    puts @response
 
     respond_to do |format|
-      if @response["code"] == "InvalidArgument"
+      # render any error returned from Chainpoint blockchain
+      if @response["message"]
         format.js { render :new }
       else
         format.js
