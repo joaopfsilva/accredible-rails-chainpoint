@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "submitted_at": "2018-07-23T04:01:52Z",
+    "processing_hints": {
+      "cal": "2018-07-23T04:02:07Z",
+      "btc": "2018-07-23T06:00:00Z"
+    }
+  },
+  "hashes": [
+    {
+      "proof_id": "21e44280-8e2d-11e8-8690-0112cb9597ab",
+      "hash": "1957db7fe23e4be1740ddeb941ddda7ae0a6b782e536a9e00b5aa82db1e84547"
+    }
+  ]
+}

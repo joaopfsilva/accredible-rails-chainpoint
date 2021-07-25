@@ -1,0 +1,5 @@
+(function() {
+  $form = $('<%= j render partial: "form" %>');
+
+  $(".error-message").text('<%= @response["message"] %>');
+})();

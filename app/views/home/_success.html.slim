@@ -1,0 +1,14 @@
+h1 Yayyy it was submitted
+
+p
+  | Submission time:
+  = @response.dig("meta", "hash_received").to_datetime
+
+- @response.dig("hashes").each do |h|
+  .hashes
+    p
+      | Proof Id:
+      = h["proof_id"]
+    p
+      | Hash:
+      = h["hash"]
